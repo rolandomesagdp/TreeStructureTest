@@ -1,4 +1,5 @@
 ﻿using System;
+using TreeStructureTest.TreeMenu;
 
 namespace TreeStructureTest
 {
@@ -6,7 +7,14 @@ namespace TreeStructureTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var treeItemsRepository = new TreeMenuItemsRepository();
+
+            var menuItems = treeItemsRepository.GetAll();
+
+            var treeMenu = new TreeMenuFactory(menuItems).Create().TreeMenu;
+
+            treeMenu.Print();
+            Console.ReadLine();
         }
     }
 }
